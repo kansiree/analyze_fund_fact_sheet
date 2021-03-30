@@ -10,6 +10,7 @@ import requests
 from pandas import json_normalize 
 from pandas import ExcelWriter
 
+
 headers = {
     # Request headers
     'Ocp-Apim-Subscription-Key': '3a5189136390449dade9d8cadca3d0a5' # Don't forget to put your keys in xxxx
@@ -37,7 +38,7 @@ def fund(request):
         projects = projects.loc[(projects['fund_status']!='CA') & (projects['fund_status']!='LI')]
         all_funds = all_funds.append(projects[{'proj_id', 'proj_abbr_name','proj_name_en', 'proj_name_th','unique_id','fund_status'}], ignore_index=True)
         
-    return HttpResponse(all_funds.to_json(), content_type="application/json") 
+    return HttpResponse(all_funds.to_json(orient='records'), content_type="application/json") 
 
 def fundByStatus(request):
     status = request.GET['status']

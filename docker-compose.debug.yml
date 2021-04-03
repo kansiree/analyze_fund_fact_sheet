@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  helloworld:
-    image: helloworld
+  analyzefundfactsheet:
+    image: analyzefundfactsheet
     build:
       context: .
       dockerfile: ./Dockerfile
